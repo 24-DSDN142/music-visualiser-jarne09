@@ -1,5 +1,5 @@
-const canvasWidth = 540;
-const canvasHeight = 960;
+const canvasWidth = 877;
+const canvasHeight = 620;
 const bezierToolDefaultActive = false;
 
 

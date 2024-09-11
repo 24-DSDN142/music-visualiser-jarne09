@@ -5,7 +5,7 @@ let firstRun = true
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 
-if(firstRun){
+if(firstRun){    //Loading in images
   brickwall = loadImage('Images/brickwall.png')
   pants = loadImage ('Images/142personblue.png')
   shirt = loadImage ('Images/142topblue.png')
@@ -74,6 +74,7 @@ if (counter<1380){ //Piano section at the start
 
 x=counter
 var bassline = map(bass,0,100,0,400)  //Skateboarder and ground movement up and down in relation to bass
+var skateboarderHeight = map(bass,0,100,0,300)
 
 var drumrotate = map(drum,0,100,-25,25)  //'Balancing' rotation in relation to the drums
 
@@ -87,8 +88,8 @@ vertex(0, 620);
 bezierVertex(289, bassline+250, 589, bassline+250, 877, 620); //Ground movement with bass
 endShape();
 
-image (pants,309,bassline+100,236.3,197)  //Pants movement
-image (boardside,309,bassline+230,223.3,53.3)  //Board movement 
+image (pants,325,skateboarderHeight+165,236.3,197)  //Pants movement
+image (boardside,325,skateboarderHeight+295,223.3,53.3)  //Board movement 
 //(Board and pants could have been done as one image, but I was trying to make the board flip)
 
 
@@ -96,7 +97,7 @@ image (boardside,309,bassline+230,223.3,53.3)  //Board movement
 
 
 push()
-translate(430,bassline+125)
+translate(450,skateboarderHeight+190)
 rotate(drumrotate)
 image (shirt,-137.8,-118,275.6,118)  //Rotates the upper body as if balancing
 pop()

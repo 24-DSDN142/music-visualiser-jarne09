@@ -16,23 +16,22 @@ if(firstRun){
   firstRun = false
 }
 
-  
   if (counter>1380){ 
-  image(brickwall,0,0,877,620)
+  image(brickwall,0,0,877,620)  //Brickwall background
   }
 
-  textFont('Verdana'); // please use CSS safe fonts
+  textFont('Verdana'); 
   rectMode(CENTER)
   textSize(10)
-  text(counter,20,20)
+  // text(counter,20,20)
 
 
 
-if (counter<1380){ 
+if (counter<1380){ //Piano section at the start
 
   fill(255)
   background(0)
-  rect(438.5,360,777,620)
+  rect(438.5,360,777,620) //Piano outline
   stroke(0)
   line(161,0,161,900)
   line(272,0,272,900)
@@ -41,21 +40,21 @@ if (counter<1380){
   line(605,0,605,900)
   line(716,0,716,900)
 
-  var otherMap = map(other,0,100,0,100)
+  var otherMap = map(other,0,100,0,120)  //Left piano key
 
   for(var i =1; i <= otherMap; i++){
     var lineStep=i*5
     line(161,lineStep,271,lineStep)
   }
 
-  var bassMap = map(bass,0,100,0,100)
+  var bassMap = map(bass,0,100,0,120)   //Middle piano key
   
   for(var i =1; i <= bassMap; i++){
     var lineStep=i*5
     line(383,lineStep,494,lineStep)
   }
 
-  var drumMap = map(drum,0,100,0,100)
+  var drumMap = map(drum,0,100,0,120)   //Right piano key
 
   for(var i =1; i <= drumMap; i++){
     var lineStep=i*5
@@ -65,31 +64,32 @@ if (counter<1380){
 }
   
   
-  strokeWeight(5)
+  strokeWeight(5)         //Lyrics in top left
   stroke(255)
   textAlign(LEFT);
-  textSize(vocal);
-  text(words, 50, 80);
+  textSize(100);
+  text(words, 50, 100);
 
 
 
 x=counter
-var bassline = map(bass,0,100,0,400)
+var bassline = map(bass,0,100,0,400)  //Skateboarder and ground movement up and down in relation to bass
 
-var drumrotate = map(drum,0,100,-25,25)
+var drumrotate = map(drum,0,100,-25,25)  //'Balancing' rotation in relation to the drums
 
 if (counter>1380){ 
 
 stroke(0)
 strokeWeight(5)
-fill(30,172,56)
+fill(30,172,56)  //Green ground
 beginShape();
 vertex(0, 620);
-bezierVertex(289, bassline+250, 589, bassline+250, 877, 620);
+bezierVertex(289, bassline+250, 589, bassline+250, 877, 620); //Ground movement with bass
 endShape();
 
-image (pants,309,bassline+100,236.3,197)
-image (boardside,309,bassline+230,223.3,53.3)
+image (pants,309,bassline+100,236.3,197)  //Pants movement
+image (boardside,309,bassline+230,223.3,53.3)  //Board movement 
+//(Board and pants could have been done as one image, but I was trying to make the board flip)
 
 
 
@@ -98,20 +98,23 @@ image (boardside,309,bassline+230,223.3,53.3)
 push()
 translate(430,bassline+125)
 rotate(drumrotate)
-image (shirt,-137.8,-118,275.6,118)
+image (shirt,-137.8,-118,275.6,118)  //Rotates the upper body as if balancing
 pop()
 
-var doomtag = map(vocal,0,100,0,40)
-
+var doomtag = map(vocal,0,100,0,40)  //MF DOOM tag in the background changes size in relation to the voal volume
 image (doom,550,-100,310+doomtag,438.5+doomtag)
+
 }
 
 if (counter>6562){
   if(counter<6590){
-background(250,0,0)
+background(234,89,36)  //Orange for 'POP' background (same as album cover colour)
 
 noFill()
+strokeWeight(20)
+stroke(89, 115, 222)
 
+//Following is bezier curves used to draw 'POP' screen
 beginShape();
 vertex(313, 83);
 bezierVertex(390, 163, 450, 172, 537, 70);
@@ -152,9 +155,16 @@ beginShape();
 vertex(637, 130);
 bezierVertex(564, 208, 455, 174, 537, 70);
 endShape();
+
+//The following is all for the 'POP' text
+fill(89, 115, 222)
+strokeWeight(10)
+stroke(140, 222, 89)
+textAlign(CENTER)
+textFont('Impact') 
+textSize(200) 
+text ('POP', 430, 380) 
+
   }
 }
-
-
-
 }
